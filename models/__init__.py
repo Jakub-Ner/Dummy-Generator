@@ -9,4 +9,4 @@ class Stringify:
         acc = ""
         for value in values:
             acc += f"{value};"
-        return acc
+        return acc[:-1]
