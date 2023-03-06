@@ -1,8 +1,10 @@
 import factory
-from factory import Faker, Factory, SubFactory
+from factory import Faker, Factory
+
+from . import Stringify
 
 
-class Uczniowie:
+class Uczniowie(Stringify):
     def __init__(self, Nazwisko, Imie, DUr):
         self.Nazwisko = Nazwisko
         self.Imie = Imie
@@ -13,10 +15,7 @@ class Uczniowie:
 
     @property
     def headers(self):
-        return "Nazwisko;Imie;DUr" # ;KlasaU;Miasto
-
-    def __str__(self):
-        return f"{self.Nazwisko};{self.Imie};{self.DUr}" # {self.IdU}; ;{self.KlasaU};{self.Miasto}
+        return "Nazwisko;Imie;DUr"  # ;KlasaU;Miasto
 
 
 @factory.Faker.override_default_locale('pl_PL')
@@ -31,9 +30,11 @@ class GeneratorUczniow(Factory):
     # KlasaU = SubFactory(GeneratorKlas)
     # Miasto = Faker('city')
 
+
 def generate_students(rows_num):
     for _ in range(rows_num):
         yield GeneratorUczniow()
+
 
 if __name__ == "__main__":
     print(GeneratorUczniow().headers)

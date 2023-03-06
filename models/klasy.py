@@ -1,11 +1,11 @@
-import factory
 from factory import Faker, Factory
 
+from . import Stringify
 
 SYMBOLS = ["Ia", "Ib", "IIa", "IIb", "IIIa", "IIIb"]
 
 
-class Klasy:
+class Klasy(Stringify):
     def __init__(self, Symbol, Profil):
         self.Symbol = Symbol
         self.Profil = Profil
@@ -15,10 +15,7 @@ class Klasy:
 
     @property
     def headers(self):
-        return "Symbol;Profil" # add Wych
-
-    def __str__(self):
-        return f"{self.Symbol};{self.Profil}" # add ;{self.Wych}
+        return "Symbol;Profil"  # add Wych
 
 
 class ClassGenerator(Factory):
@@ -33,8 +30,8 @@ def generate_classes(_):
     for symbol in SYMBOLS:
         yield ClassGenerator(Symbol=symbol)
 
+
 if __name__ == "__main__":
     print(ClassGenerator().headers)
     for row in generate_classes(None):
         print(row)
-
