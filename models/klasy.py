@@ -2,6 +2,9 @@ import factory
 from factory import Faker, Factory
 
 
+SYMBOLS = ["Ia", "Ib", "IIa", "IIb", "IIIa", "IIIb"]
+
+
 class Klasy:
     def __init__(self, Symbol, Profil):
         self.Symbol = Symbol
@@ -18,15 +21,20 @@ class Klasy:
         return f"{self.Symbol};{self.Profil}" # add ;{self.Wych}
 
 
-class GeneratorKlas(Factory):
+class ClassGenerator(Factory):
     class Meta:
         model = Klasy
 
-    Symbol = Faker("word", ext_word_list=["Ia", "Ib", "IIa", "IIb", "IIIa", "IIIb"])
+    Symbol = ""
     Profil = Faker("word", ext_word_list=["matematyczny", "humanistyczny", "przyrodniczy", "techniczny"])
 
 
+def generate_classes(_):
+    for symbol in SYMBOLS:
+        yield ClassGenerator(Symbol=symbol)
 
 if __name__ == "__main__":
-    print(GeneratorKlas().headers)
-    print(GeneratorKlas())
+    print(ClassGenerator().headers)
+    for row in generate_classes(None):
+        print(row)
+

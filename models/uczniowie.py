@@ -4,7 +4,6 @@ from factory import Faker, Factory, SubFactory
 
 class Uczniowie:
     def __init__(self, Nazwisko, Imie, DUr):
-        # self.IdU = IdU
         self.Nazwisko = Nazwisko
         self.Imie = Imie
         self.DUr = DUr
@@ -14,7 +13,7 @@ class Uczniowie:
 
     @property
     def headers(self):
-        return "IdU;Nazwisko;Imie;DUr" # ;KlasaU;Miasto
+        return "Nazwisko;Imie;DUr" # ;KlasaU;Miasto
 
     def __str__(self):
         return f"{self.Nazwisko};{self.Imie};{self.DUr}" # {self.IdU}; ;{self.KlasaU};{self.Miasto}
@@ -25,7 +24,6 @@ class GeneratorUczniow(Factory):
     class Meta:
         model = Uczniowie
 
-    # IdU = 0
     Nazwisko = Faker('last_name')
     Imie = Faker('first_name')
     DUr = Faker('date_of_birth', minimum_age=5, maximum_age=65)
@@ -33,7 +31,11 @@ class GeneratorUczniow(Factory):
     # KlasaU = SubFactory(GeneratorKlas)
     # Miasto = Faker('city')
 
+def generate_students(rows_num):
+    for _ in range(rows_num):
+        yield GeneratorUczniow()
 
 if __name__ == "__main__":
     print(GeneratorUczniow().headers)
-    print(GeneratorUczniow())
+    for row in generate_students(10):
+        print(row)
