@@ -1,7 +1,7 @@
 from models.klasy import generate_classes
 from models.uczniowie import generate_students
 
-ROWS_NUM = 20
+ROWS_NUM = 60
 
 LAB1 = [generate_students, generate_classes]
 
@@ -13,7 +13,7 @@ def generateTables(generators_list):
         table_name = type(obj).__name__
         generated_data = [f"{row}\n" for row in generator(ROWS_NUM)]
 
-        with open(f"{table_name}.csv", 'w+') as f:
+        with open(f"{table_name}.csv", 'w+', encoding="utf-8") as f:
             f.write(f"{obj.headers}\n")
             f.writelines(generated_data)
 
