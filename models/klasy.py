@@ -2,7 +2,7 @@ from factory import Faker, Factory
 
 from . import Stringify
 
-SYMBOLS = ["Ia", "Ib", "IIa", "IIb", "IIIa", "IIIb"]
+SYMBOLS = ["Ia", "Ib", "Ic", "IIa", "IIb", "IIIa", "IIIb", "IIIc", "IVa", "IVb"]
 
 
 class Klasy(Stringify):
@@ -10,7 +10,6 @@ class Klasy(Stringify):
         self.Symbol = Symbol
         self.Profil = Profil
 
-        # TODO:
         # self.Wych = Wych
 
     @property
@@ -26,12 +25,12 @@ class ClassGenerator(Factory):
     Profil = Faker("word", ext_word_list=["matematyczny", "humanistyczny", "przyrodniczy", "techniczny"])
 
 
-def generate_classes(_):
+def generate_classes():
     for symbol in SYMBOLS:
         yield ClassGenerator(Symbol=symbol)
 
 
 if __name__ == "__main__":
     print(ClassGenerator().headers)
-    for row in generate_classes(None):
+    for row in generate_classes():
         print(row)
