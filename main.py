@@ -14,7 +14,7 @@ def generateTables(generators_list):
         table_name = type(obj).__name__
         generated_data = [f"{row}\n" for row in generator()]
 
-        with open(f"{table_name}.csv", 'w+', encoding="utf-8") as f:
+        with open(f"./lab1_generated_tables/{table_name}.csv", 'w+', encoding="utf-8") as f:
             f.write(f"{obj.headers}\n")
             f.writelines(generated_data)
 
