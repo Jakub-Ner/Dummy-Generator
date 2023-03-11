@@ -7,8 +7,8 @@ from . import Stringify
 
 
 class Nauczyciele(Stringify):
-    def __init__(self, IdN, Nazwisko, Imie, DZatr, DUr, Plec, Pensja, Pensum, Telefon, working_offset):
-        self.IdN = IdN
+    def __init__(self, Nazwisko, Imie, DZatr, DUr, Plec, Pensja, Pensum, Telefon, working_offset):
+        # self.IdN = IdN
         self.Nazwisko = Nazwisko
         self.Imie = Imie
         self.DZatr = DZatr.strftime("%d-%m-%Y")
@@ -24,7 +24,7 @@ class Nauczyciele(Stringify):
 
     @property
     def headers(self):
-        return "IdN;Nazwisko;Imie;DZatr;DUr;Plec;Pensja;Pensum;Telefon"  # ;KlasaU;Miasto
+        return "Nazwisko;Imie;DZatr;DUr;Plec;Pensja;Pensum;Telefon"  # ;KlasaU;Miasto
 
 
 @factory.Faker.override_default_locale('pl_PL')
@@ -34,7 +34,7 @@ class TeachersFactory(Factory):
 
     working_offset = factory.Faker('random_int', min=25, max=27)
 
-    IdN = 0
+    # IdN = 0
     Nazwisko = Faker('last_name')
     Imie = Faker('first_name')
     DUr = Faker('date_of_birth', minimum_age=27, maximum_age=60)
@@ -50,7 +50,7 @@ class TeachersFactory(Factory):
 
 def generate_teachers(rows_num=20):
     for i in range(rows_num):
-        yield TeachersFactory(IdN=i + 1)
+        yield TeachersFactory()
 
 
 if __name__ == "__main__":

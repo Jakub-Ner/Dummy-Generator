@@ -8,13 +8,13 @@ SUBJECTS = ["matematyka", "fizyka", "chemia", "biologia", "geografia", "historia
 
 
 class Przedmioty(Stringify):
-    def __init__(self, IdP, NazwaP):
-        self.IdP = IdP
+    def __init__(self, NazwaP):
+        # self.IdP = IdP
         self.NazwaP = NazwaP
 
     @property
     def headers(self):
-        return "IdP;NazwaP"
+        return "NazwaP"
 
 
 @factory.Faker.override_default_locale('pl_PL')
@@ -22,13 +22,13 @@ class SubjectsFactory(Factory):
     class Meta:
         model = Przedmioty
 
-    IdP = 0
+    # IdP = 0
     NazwaP = ""
 
 
 def generate_subjects(rows_num=10):
     for i in range(rows_num):
-        yield SubjectsFactory(IdP=i + 1, NazwaP=SUBJECTS[i])
+        yield SubjectsFactory(NazwaP=SUBJECTS[i])
 
 
 if __name__ == "__main__":

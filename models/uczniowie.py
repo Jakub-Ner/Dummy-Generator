@@ -5,8 +5,8 @@ from . import Stringify
 
 from datetime import datetime
 class Uczniowie(Stringify):
-    def __init__(self, IdU, Nazwisko, Imie, DUr, Plec):
-        self.IdU = IdU
+    def __init__(self, Nazwisko, Imie, DUr, Plec):
+        # self.IdU = IdU
         self.Nazwisko = Nazwisko
         self.Imie = Imie
         self.DUr = DUr.strftime("%d-%m-%Y")
@@ -17,7 +17,7 @@ class Uczniowie(Stringify):
 
     @property
     def headers(self):
-        return "IdU;Nazwisko;Imie;DUr;Plec"  # ;KlasaU;Miasto
+        return "Nazwisko;Imie;DUr;Plec"  # ;KlasaU;Miasto
 
 
 @factory.Faker.override_default_locale('pl_PL')
@@ -25,7 +25,7 @@ class StudentsFactory(Factory):
     class Meta:
         model = Uczniowie
 
-    IdU = 0
+    # IdU = 0
     Nazwisko = Faker('last_name')
     Imie = Faker('first_name')
     DUr = Faker('date_of_birth', minimum_age=15, maximum_age=19)
@@ -37,7 +37,7 @@ class StudentsFactory(Factory):
 
 def generate_students(rows_num=60):
     for i in range(rows_num):
-        yield StudentsFactory(IdU=i + 1)
+        yield StudentsFactory()
 
 
 if __name__ == "__main__":
