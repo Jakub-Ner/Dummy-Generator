@@ -1,8 +1,9 @@
 from models.klasy import generate_classes
 from models.uczniowie import generate_students
-from models.nauczyciele import generate_nauczyciele
+from models.nauczyciele import generate_teachers
+from models.miasta import generate_cities
 
-LAB1 = [generate_students, generate_classes, generate_nauczyciele]
+LAB1 = [generate_students, generate_classes, generate_teachers, generate_cities]
 
 
 def generateTables(generators_list):

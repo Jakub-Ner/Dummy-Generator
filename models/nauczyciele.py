@@ -28,7 +28,7 @@ class Nauczyciele(Stringify):
 
 
 @factory.Faker.override_default_locale('pl_PL')
-class GeneratorNauczycieli(Factory):
+class TeachersFactory(Factory):
     class Meta:
         model = Nauczyciele
 
@@ -48,12 +48,12 @@ class GeneratorNauczycieli(Factory):
     # Miasto = Faker('city')
 
 
-def generate_nauczyciele(rows_num=20):
+def generate_teachers(rows_num=20):
     for i in range(rows_num):
-        yield GeneratorNauczycieli(IdN=i + 1)
+        yield TeachersFactory(IdN=i + 1)
 
 
 if __name__ == "__main__":
-    print(GeneratorNauczycieli().headers)
-    for row in generate_nauczyciele(10):
+    print(TeachersFactory().headers)
+    for row in generate_teachers(10):
         print(row)

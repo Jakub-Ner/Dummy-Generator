@@ -21,7 +21,7 @@ class Uczniowie(Stringify):
 
 
 @factory.Faker.override_default_locale('pl_PL')
-class GeneratorUczniow(Factory):
+class StudentsFactory(Factory):
     class Meta:
         model = Uczniowie
 
@@ -37,10 +37,10 @@ class GeneratorUczniow(Factory):
 
 def generate_students(rows_num=60):
     for i in range(rows_num):
-        yield GeneratorUczniow(IdU=i + 1)
+        yield StudentsFactory(IdU=i + 1)
 
 
 if __name__ == "__main__":
-    print(GeneratorUczniow().headers)
+    print(StudentsFactory().headers)
     for row in generate_students(10):
         print(row)
