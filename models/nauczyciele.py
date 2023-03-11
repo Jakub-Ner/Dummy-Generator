@@ -1,7 +1,7 @@
+from datetime import timedelta
+
 import factory
 from factory import Faker, Factory
-
-from datetime import datetime, timedelta
 
 from . import Stringify
 
