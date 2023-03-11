@@ -11,8 +11,8 @@ class Nauczyciele(Stringify):
         self.IdN = IdN
         self.Nazwisko = Nazwisko
         self.Imie = Imie
-        self.DZatr = DZatr
-        self.DUr = DUr
+        self.DZatr = DZatr.strftime("%d-%m-%Y")
+        self.DUr = DUr.strftime("%d-%m-%Y")
         self.Plec = Plec
         self.Pensja = Pensja
         self.Pensum = Pensum

@@ -3,13 +3,13 @@ from factory import Faker, Factory
 
 from . import Stringify
 
-
+from datetime import datetime
 class Uczniowie(Stringify):
     def __init__(self, IdU, Nazwisko, Imie, DUr, Plec):
         self.IdU = IdU
         self.Nazwisko = Nazwisko
         self.Imie = Imie
-        self.DUr = DUr
+        self.DUr = DUr.strftime("%d-%m-%Y")
         self.Plec = Plec
 
         # self.KlasaU = KlasaU

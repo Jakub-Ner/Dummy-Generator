@@ -7,7 +7,7 @@ class Oceny(Stringify):
     def __init__(self, IdO, Ocena, DataO):
         self.IdO = IdO
         self.Ocena = Ocena
-        self.DataO = DataO
+        self.DataO = DataO.strftime("%d-%m-%Y")
 
     @property
     def headers(self):
