@@ -2,6 +2,8 @@ from factory import Faker, Factory
 
 from . import Stringify
 
+GRADES_NUM = 30
+
 
 class Oceny(Stringify):
     def __init__(self, Ocena, DataO):
@@ -23,7 +25,7 @@ class GradesGenerator(Factory):
     DataO = Faker("date_of_birth", maximum_age=3)
 
 
-def generate_grades(rows_num=30):
+def generate_grades(rows_num=GRADES_NUM):
     for i in range(rows_num):
         yield GradesGenerator()
 

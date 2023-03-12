@@ -5,6 +5,8 @@ from factory import Faker, Factory
 from . import Stringify
 from .utils.names import get_name
 
+STUDENTS_NUM = 60
+
 
 class Uczniowie(Stringify):
     def __init__(self, Nazwisko, Imie, DUr, Plec):
@@ -37,7 +39,7 @@ class StudentsFactory(Factory):
     # Miasto = Faker('city')
 
 
-def generate_students(rows_num=60):
+def generate_students(rows_num=STUDENTS_NUM):
     for i in range(rows_num):
         yield StudentsFactory()
 

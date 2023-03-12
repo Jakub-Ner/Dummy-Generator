@@ -6,6 +6,8 @@ from . import Stringify
 SUBJECTS = ["matematyka", "fizyka", "chemia", "biologia", "geografia", "historia", "język polski", "język angielski",
             "język niemiecki", "religia"]
 
+SUBJECTS_NUM = len(SUBJECTS)
+
 
 class Przedmioty(Stringify):
     def __init__(self, NazwaP):
@@ -26,7 +28,7 @@ class SubjectsFactory(Factory):
     NazwaP = ""
 
 
-def generate_subjects(rows_num=10):
+def generate_subjects(rows_num=SUBJECTS_NUM):
     for i in range(rows_num):
         yield SubjectsFactory(NazwaP=SUBJECTS[i])
 

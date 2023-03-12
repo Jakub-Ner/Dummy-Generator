@@ -3,6 +3,8 @@ from factory import Faker, Factory
 
 from . import Stringify
 
+CITIES_NUM = 12
+
 
 class Miasta(Stringify):
     def __init__(self, NazwaM):
@@ -23,7 +25,7 @@ class CitiesFactory(Factory):
     NazwaM = Faker('city')
 
 
-def generate_cities(rows_num=12):
+def generate_cities(rows_num=CITIES_NUM):
     for i in range(rows_num):
         yield CitiesFactory()
 

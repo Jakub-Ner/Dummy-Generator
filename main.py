@@ -4,8 +4,10 @@ from models.nauczyciele import generate_teachers
 from models.uczniowie import generate_students
 from models.przedmioty import generate_subjects
 from models.oceny import generate_grades
+from models.uczy import generate_teaches
 
-LAB1 = [generate_students, generate_classes, generate_teachers, generate_cities, generate_subjects, generate_grades]
+LAB1 = [generate_students, generate_classes, generate_teachers, generate_cities, generate_subjects, generate_grades,
+        generate_teaches]
 
 
 def generateTables(generators_list):

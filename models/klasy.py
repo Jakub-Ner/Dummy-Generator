@@ -3,6 +3,7 @@ from factory import Faker, Factory
 from . import Stringify
 
 SYMBOLS = ["Ia", "Ib", "Ic", "IIa", "IIb", "IIIa", "IIIb", "IIIc", "IVa", "IVb"]
+CLASSES_NUM = len(SYMBOLS)
 
 
 class Klasy(Stringify):
