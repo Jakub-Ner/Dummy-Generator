@@ -35,7 +35,7 @@ class TeachersFactory(Factory):
     class Meta:
         model = Nauczyciele
 
-    working_offset = factory.Faker('random_int', min=25, max=27)
+    working_offset = Faker('random_int', min=25, max=27)
 
     # IdN = 0
     Nazwisko = Faker('last_name')
