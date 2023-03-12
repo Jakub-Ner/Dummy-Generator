@@ -1,10 +1,25 @@
 from factory import Faker, Factory
 
+from datetime import date
+import random
+
 from . import Stringify
 from .nauczyciele import TEACHERS_NUM
 
 SYMBOLS = ["Ia", "Ib", "Ic", "IIa", "IIb", "IIIa", "IIIb", "IIIc", "IVa", "IVb"]
 CLASSES_NUM = len(SYMBOLS)
+
+
+def get_class_symbol(obj):
+    age = (date.today() - obj.DUr).days // 365
+    if age <= 16:
+        return random.choice(SYMBOLS[:3])
+    elif age == 17:
+        return random.choice(SYMBOLS[3:5])
+    elif age == 18:
+        return random.choice(SYMBOLS[5:8])
+    else:
+        return random.choice(SYMBOLS[8:])
 
 
 class Klasy(Stringify):
@@ -15,7 +30,7 @@ class Klasy(Stringify):
 
     @property
     def headers(self):
-        return "Symbol;Profil;Wych"  # add Wych
+        return "Symbol;Profil;Wych"
 
 
 class ClassGenerator(Factory):

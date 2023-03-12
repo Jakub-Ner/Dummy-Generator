@@ -22,12 +22,10 @@ class Nauczyciele(Stringify):
         self.Telefon = Telefon
 
         self.working_offset = working_offset
-        # self.KlasaU = KlasaU
-        # self.Miasto = Miasto
 
     @property
     def headers(self):
-        return "Nazwisko;Imie;DZatr;DUr;Plec;Pensja;Pensum;Telefon"  # ;KlasaU;Miasto
+        return "Nazwisko;Imie;DZatr;DUr;Plec;Pensja;Pensum;Telefon"
 
 
 @factory.Faker.override_default_locale('pl_PL')
@@ -46,9 +44,6 @@ class TeachersFactory(Factory):
     Pensja = Faker('pydecimal', left_digits=4, right_digits=2, positive=True)
     Pensum = Faker("pyint", min_value=10, max_value=40)
     Telefon = Faker('phone_number')
-
-    # KlasaU = SubFactory(GeneratorKlas)
-    # Miasto = Faker('city')
 
 
 def generate_teachers(rows_num=TEACHERS_NUM):

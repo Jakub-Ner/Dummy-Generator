@@ -4,7 +4,7 @@ from factory import Faker, Factory
 
 from . import Stringify
 from .utils.names import get_name
-from .klasy import SYMBOLS
+from .klasy import get_class_symbol
 from .miasta import CITIES_NUM
 
 STUDENTS_NUM = 60
@@ -35,7 +35,7 @@ class StudentsFactory(Factory):
     Imie = factory.lazy_attribute(get_name)
     DUr = Faker('date_of_birth', minimum_age=15, maximum_age=19)
     Plec = Faker('random_element', elements=('M', 'K'))
-    KlasaU = Faker('word', ext_word_list=SYMBOLS)
+    KlasaU = factory.LazyAttribute(get_class_symbol)
     Miasto = Faker('random_int', min=1, max=CITIES_NUM)
 
 
