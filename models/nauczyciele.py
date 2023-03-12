@@ -4,6 +4,7 @@ import factory
 from factory import Faker, Factory
 
 from . import Stringify
+from .utils.names import get_name
 
 
 class Nauczyciele(Stringify):
@@ -36,9 +37,9 @@ class TeachersFactory(Factory):
 
     # IdN = 0
     Nazwisko = Faker('last_name')
-    Imie = Faker('first_name')
-    DUr = Faker('date_of_birth', minimum_age=27, maximum_age=60)
+    Imie = factory.lazy_attribute(get_name)
     DZatr = factory.lazy_attribute(lambda o: o.DUr + timedelta(days=380 * o.working_offset))  # 380 for uneven dates
+    DUr = Faker('date_of_birth', minimum_age=27, maximum_age=60)
     Plec = Faker('random_element', elements=('M', 'K'))
     Pensja = Faker('pydecimal', left_digits=4, right_digits=2, positive=True)
     Pensum = Faker("pyint", min_value=10, max_value=40)

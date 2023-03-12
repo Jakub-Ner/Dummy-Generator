@@ -1,9 +1,11 @@
 import factory
+
 from factory import Faker, Factory
 
 from . import Stringify
+from .utils.names import get_name
 
-from datetime import datetime
+
 class Uczniowie(Stringify):
     def __init__(self, Nazwisko, Imie, DUr, Plec):
         # self.IdU = IdU
@@ -27,7 +29,7 @@ class StudentsFactory(Factory):
 
     # IdU = 0
     Nazwisko = Faker('last_name')
-    Imie = Faker('first_name')
+    Imie = factory.lazy_attribute(get_name)
     DUr = Faker('date_of_birth', minimum_age=15, maximum_age=19)
     Plec = Faker('random_element', elements=('M', 'K'))
 
